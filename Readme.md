@@ -1,7 +1,7 @@
 node-red-contrib-mail-parse
 ===========================
 
-[![NPM](https://nodei.co/npm/node-red-contrib-aws-mail-parse.png)](https://nodei.co/npm/node-red-contrib-mail-parse/)
+[![NPM](https://nodei.co/npm/node-red-contrib-mail-parse.png)](https://nodei.co/npm/node-red-contrib-mail-parse/)
 
 [Node-Red][1] node to parse mime encoded e-mail messages using [mailparser][2].
 
