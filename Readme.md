@@ -5,6 +5,8 @@ node-red-contrib-mail-parse
 
 [Node-Red][1] node to parse mime encoded e-mail messages using [mailparser][2].
 
+This node parses raw source of e-mail messages in mime format into a structured object. This allows you to get access the e-mail properties and do something with it in your flows.
+
 #Install
 
 Run the following command in the root directory of your Node-RED install
