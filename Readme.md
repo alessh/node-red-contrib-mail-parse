@@ -13,17 +13,18 @@ Run the following command in the root directory of your Node-RED install
 
     npm install node-red-contrib-mail-parse
 
+### Common mail properties
 Property | Method | Example
 ------------ | --- | ------------
-To | msg.payload.to | [ { "address": "receiver@example.com", "name": "Receiver" } ]
-From | msg.payload.from | [ { "address": "sender@example.com", "name": "Sender" } ]
-Subject | msg.payload.subject | Hello world!
-Body (html) | msg.payload.html | <html><body>How are you today?</body></html>
-Body (text) | msg.payload.text | How are you today?
-Body (attachments) | msg.payload.attachments | *** see attachments object ***
-Body (attachments) | msg.payload.attachments.length | 4
+to | msg.payload.to | [ { "address": "receiver@example.com", "name": "Receiver" } ]
+from | msg.payload.from | [ { "address": "sender@example.com", "name": "Sender" } ]
+subject | msg.payload.subject | Hello world!
+body (html) | msg.payload.html | <code><html><body>How are you today?</body></html></code>
+body (text) | msg.payload.text | How are you today?
+attachments | msg.payload.attachments[] | *** see attachments object properties ***
+number of attachments | msg.payload.attachments.length | 4
 
-### Mail properties
+### All mail properties
 
   * **headers** - unprocessed headers in the form of - `{key: value}` - if there were multiple fields with the same key then the value is an array
   * **from** - an array of parsed `From` addresses - `[{address:'sender@example.com',name:'Sender Name'}]` (should be only one though)
