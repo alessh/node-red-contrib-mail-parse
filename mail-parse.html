@@ -19,48 +19,8 @@
 
 <script type="text/x-red" data-help-name="mail-parse">
     <p>Parses raw source of e-mail messages into a structured object.</p>
-    <p>After parse, the e-mail properties will be put inside msg.payload like this:</p>
-
-Property | Method | Example
------------- | --- | ------------
-To | msg.payload.to | [ { "address": "receiver@example.com", "name": "Receiver" } ]
-From | msg.payload.from | [ { "address": "sender@example.com", "name": "Sender" } ]
-Subject | msg.payload.subject | Hello world!
-Body (html) | msg.payload.html | <html><body>How are you today?</body></html>
-Body (text) | msg.payload.text | How are you today?
-Body (attachments) | msg.payload.attachments | *** see attachments object ***
-Body (attachments) | msg.payload.attachments.length | 4
-
-### Mail properties
-
-  * **headers** - unprocessed headers in the form of - `{key: value}` - if there were multiple fields with the same key then the value is an array
-  * **from** - an array of parsed `From` addresses - `[{address:'sender@example.com',name:'Sender Name'}]` (should be only one though)
-  * **to** - an array of parsed `To` addresses
-  * **cc** - an array of parsed `Cc` addresses
-  * **bcc** - an array of parsed 'Bcc' addresses
-  * **subject** - the subject line
-  * **references** - an array of reference message id values (not set if no reference values present)
-  * **inReplyTo** - an array of In-Reply-To message id values (not set if no in-reply-to values present)
-  * **priority** - priority of the e-mail, always one of the following: *normal* (default), *high*, *low*
-  * **text** - text body
-  * **html** - html body
-  * **date** - date field as a `Date()` object. If date could not be resolved or is not found this field is not set. Check the original date string from `headers.date`
-  * **attachments** - an array of attachments
-
-### Attachments properties
-```javascript
-attachments = [{
-    contentType: 'image/png',
-    fileName: 'image.png',
-    contentDisposition: 'attachment',
-    contentId: '5.1321281380971@localhost',
-    transferEncoding: 'base64',
-    length: 126,
-    generatedFileName: 'image.png',
-    checksum: 'e4cef4c6e26037bcf8166905207ea09b',
-    content: <Buffer ...>
-}];
-```
+    <p>After parse, the e-mail properties will be put inside <code>msg.payload</code>.</p>
+    <p>See <a href="https://github.com/alessandro-holanda/node-red-contrib-mail-parse">github.com/alessandro-holanda/node-red-contrib-mail-parse</a> to details.</p>
 </script>
 
 <script type="text/javascript">
