@@ -57,6 +57,7 @@ attachments = [{
 #Nodes
 ![alt tag](https://raw.githubusercontent.com/alessandro-holanda/node-red-contrib-mail-parse/master/node.png)
 ![alt tag](https://raw.githubusercontent.com/alessandro-holanda/node-red-contrib-mail-parse/master/flow.png)
+![alt tag](https://raw.githubusercontent.com/alessandro-holanda/node-red-contrib-mail-parse/master/flow-with-attachment-validation.png)
 
 #Author
 

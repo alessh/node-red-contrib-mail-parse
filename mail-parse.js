@@ -13,6 +13,7 @@
 module.exports = function (RED) {
     var RED = require(process.env.NODE_RED_HOME+"/red/red");    
     var util = require('util');
+    var fs = require('fs');
 
     function mailparse(config) {
         RED.nodes.createNode(this, config);
@@ -23,7 +24,9 @@ module.exports = function (RED) {
             try {
 
                 var MailParser = require("mailparser").MailParser;
-                var mailparser = new MailParser();
+                var mailparser = new MailParser({
+                    streamAttachments: true
+                });
                 
                 /*var email = "From: 'Sender Name' <sender@example.com>\r\n"+
                         "To: 'Receiver Name' <receiver@example.com>\r\n"+
@@ -31,14 +34,51 @@ module.exports = function (RED) {
                         "\r\n"+
                         "How are you today?";*/
 
+                mailparser.on("end", function(mail){
+                    msg.payload = mail;
+                    node.send(msg); // object structure for parsed e-mail
+
+                });
+
+                mailparser.on("attachment", function(attachment, mail){
+                  //console.log('Attachment:' + attachment.generatedFileName);
+                  //var file = fs.createWriteStream(attachment.generatedFileName || attachment.fileName);
+
+                  attachment.stream.pipe(file);
+
+                  var streamToString = function(stream, callback) {
+                    var content = '';
+                    stream.on('data', function(chunk) {
+                      content += chunk;
+                    });
+                    stream.on('end', function() {
+                      callback(content);
+                    });
+                  }
+
+                  streamToString(attachment.stream, function(payload) {
+                      var msg = { 
+                        contentType: attachment.contentType, // 'image/png',
+                        fileName: attachment.fileName, // 'image.png',
+                        contentDisposition: attachment.contentDisposition, // 'attachment',
+                        contentId: attachment.contentId, // '5.1321281380971@localhost',
+                        transferEncoding: attachment.transferEncoding, // 'base64', 'quoted-printable'
+                        length: attachment.length, // 126,
+                        generatedFileNamefile: attachment.generatedFileNamefile, // 'image.png',
+                        checksum: attachment.checksum, // 'e4cef4c6e26037bcf8166905207ea09b',
+                        payload: payload
+                      };
+                      var msgs = [];
+                      msgs.push(null);
+                      msgs.push(msg);
+                      node.send(msgs);
+                  });
+
+                });
+
                 // send the email source to the parser 
                 mailparser.write(msg.payload);
                 mailparser.end();
-
-                mailparser.on("end", function(mail){
-                    msg.payload = mail;
-                    node.send(msg); // object structure for parsed e-mail 
-                });
 
             } catch(err) {
                 node.error(err.message);
