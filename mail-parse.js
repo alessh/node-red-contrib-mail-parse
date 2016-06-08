@@ -42,9 +42,6 @@ module.exports = function (RED) {
 
                 mailparser.on("attachment", function(attachment, mail){
                   //console.log('Attachment:' + attachment.generatedFileName);
-                  //var file = fs.createWriteStream(attachment.generatedFileName || attachment.fileName);
-
-                  attachment.stream.pipe(file);
 
                   var streamToString = function(stream, callback) {
                     var content = '';
