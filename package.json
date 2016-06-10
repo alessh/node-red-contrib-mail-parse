@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-mail-parse",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Node-RED node to parse mime encoded e-mail messages.",
   "main": "mail-parse.js",
   "dependencies": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alessandro-holanda/node-red-contrib-mail-parse.git"
+    "url": "git+https://github.com/alessh/node-red-contrib-mail-parse.git"
   },
   "keywords": [
     "node-red",
@@ -27,7 +27,7 @@
   "author": "Alessandro Holanda",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/alessandro-holanda/node-red-contrib-mail-parse/issues"
+    "url": "https://github.com/alessh/node-red-contrib-mail-parse/issues"
   },
-  "homepage": "https://github.com/alessandro-holanda/node-red-contrib-mail-parse#readme"
+  "homepage": "https://github.com/alessh/node-red-contrib-mail-parse#readme"
 }
