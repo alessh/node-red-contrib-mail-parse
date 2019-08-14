@@ -11,7 +11,6 @@
 */
 
 module.exports = function (RED) {
-    var RED = require(process.env.NODE_RED_HOME+"/red/red");    
     var util = require('util');
     var fs = require('fs');
 
